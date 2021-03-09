@@ -11,8 +11,9 @@ describe('Url Shortener', () => {
     
       cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
         body: {
-          long_url: 'https://youtu.be/dGeEuyG_DIc',
-          title: 'does this work?'
+          id: 2, 
+          long_url: "https://youtu.be/dGeEuyG_DIc", 
+          short_url: "http://localhost:3001/useshorturl/2", title: 'Does this work?'
         }
       });
     
@@ -63,7 +64,7 @@ describe('Url Shortener', () => {
       .should('contain', 'Shorten Please!');
   });
 
-  it('Should be able to post with the shorten button', () => {
+  it.only('Should be able to post with the shorten button', () => {
     cy.get('.url').should('have.length', 1);
 
     cy.get('form input[name="title"]').type('testes');
@@ -75,10 +76,9 @@ describe('Url Shortener', () => {
     cy.get('.url').should('have.length', 2);
 
     cy.get('.url:last')
-      .should('contain', 'does this work?')
-      //you'll prolly notice that this isn't a shortened URL. However, you look at App.js line 27, you'll see that I'm adding the response to the DOM, not the newURL passed in as a parameter. That means that the url that is coming in is from my stubbed response, cuz this url matches the url in my intercept in this file at line 14
-      .and('contain', 'https://youtu.be/dGeEuyG_DIc')
+      .should('contain', 'Does this work?')
+      .and('contain', 'http://localhost:3001/useshorturl/2');
+
+      cy.get('.url:last a').should('have.attr', 'href', 'http://localhost:3001/useshorturl/2');
   });
-
-
 })
