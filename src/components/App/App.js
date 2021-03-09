@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, addUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -22,6 +22,12 @@ export class App extends Component {
       .then(response => this.setState({ urls: response.urls }));
   }
 
+  makeNewUrl = (newURL) => {
+    addUrls(newURL)
+      .then(() => this.setState({ urls: [...this.state.urls, newURL] }))
+  }
+
+
   render() {
     return (
       <main className="App">
@@ -30,7 +36,7 @@ export class App extends Component {
           <UrlForm />
         </header>
 
-        <UrlContainer urls={this.state.urls}/>
+        <UrlContainer makeNewUrL={this.makeNewUrl} urls={this.state.urls}/>
       </main>
     );
   }
