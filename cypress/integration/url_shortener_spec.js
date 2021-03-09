@@ -13,7 +13,8 @@ describe('Url Shortener', () => {
         body: {
           id: 2, 
           long_url: "https://youtu.be/dGeEuyG_DIc", 
-          short_url: "http://localhost:3001/useshorturl/2", title: 'Does this work?'
+          short_url: "http://localhost:3001/useshorturl/2", 
+          title: 'Does this work?'
         }
       });
     
