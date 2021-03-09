@@ -64,7 +64,7 @@ describe('Url Shortener', () => {
       .should('contain', 'Shorten Please!');
   });
 
-  it.only('Should be able to post with the shorten button', () => {
+  it('Should be able to post with the shorten button', () => {
     cy.get('.url').should('have.length', 1);
 
     cy.get('form input[name="title"]').type('testes');
