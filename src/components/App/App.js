@@ -24,7 +24,8 @@ export class App extends Component {
 
   makeNewUrl = (newURL) => {
     addUrls(newURL)
-      .then(() => this.setState({ urls: [...this.state.urls, newURL] }))
+    .then(() => this.getAllUrls())
+      // .then(() => this.setState({ urls: [...this.state.urls, newURL] }))
   }
 
 
