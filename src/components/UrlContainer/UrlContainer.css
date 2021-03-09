@@ -1,7 +1,17 @@
+.url-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
 .url {
   border: 1px solid black;
-  display: inline-block;
-  margin: 10px;
   padding: 5px;
+  width: 90%;
   background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
