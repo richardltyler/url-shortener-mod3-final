@@ -8,11 +8,18 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      urls: []
+      urls: [],
+      error: false
     }
   }
 
   componentDidMount() {
+    this.getAllUrls();
+  }
+
+  getAllUrls = () => {
+    getUrls()
+      .then(response => this.setState({ urls: response.urls }));
   }
 
   render() {
