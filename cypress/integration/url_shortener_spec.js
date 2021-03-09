@@ -38,6 +38,8 @@ describe('Url Shortener', () => {
   });
 
   it('Should be able to type in the title input', () => {
+    cy.get('form input[name="title"]').should('have.value', '');
+
     cy.get('form input[name="title"]').type('testes');
 
     cy.get('form input[name="title"]').should('have.value', 'testes')
@@ -48,6 +50,8 @@ describe('Url Shortener', () => {
   });
 
   it('Should be able to type in the url input', () => {
+    cy.get('form input[name="urlToShorten"]').should('have.value', '');
+
     cy.get('form input[name="urlToShorten"]').type(baseURL);
 
     cy.get('form input[name="urlToShorten"]').should('have.value', baseURL)
@@ -59,7 +63,7 @@ describe('Url Shortener', () => {
       .should('contain', 'Shorten Please!');
   });
 
-  it.only('Should be able to post with the shorten button', () => {
+  it('Should be able to post with the shorten button', () => {
     cy.get('.url').should('have.length', 1);
 
     cy.get('form input[name="title"]').type('testes');
