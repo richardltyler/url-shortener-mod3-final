@@ -17,7 +17,7 @@ describe('Url Shortener', () => {
         }
       });
     
-    cy.visit(baseURL)
+    cy.visit(baseURL);
   })
 
   it('Should have a page title', () => {
@@ -43,7 +43,7 @@ describe('Url Shortener', () => {
 
     cy.get('form input[name="title"]').type('testes');
 
-    cy.get('form input[name="title"]').should('have.value', 'testes')
+    cy.get('form input[name="title"]').should('have.value', 'testes');
   });
 
   it('Should have a url input', () => {
@@ -55,7 +55,7 @@ describe('Url Shortener', () => {
 
     cy.get('form input[name="urlToShorten"]').type(baseURL);
 
-    cy.get('form input[name="urlToShorten"]').should('have.value', baseURL)
+    cy.get('form input[name="urlToShorten"]').should('have.value', baseURL);
   });
 
   it('Should have a shorten button', () => {
@@ -75,10 +75,10 @@ describe('Url Shortener', () => {
 
     cy.get('.url').should('have.length', 2);
 
-    cy.get('.url:last')
-      .should('contain', 'Does this work?')
-      .and('contain', 'http://localhost:3001/useshorturl/2');
+    cy.get('.url:last').should('contain', 'Does this work?');
+    
+    cy.get('.url:last a').should('contain', 'http://localhost:3001/useshorturl/2');
 
-      cy.get('.url:last a').should('have.attr', 'href', 'http://localhost:3001/useshorturl/2');
+    cy.get('.url:last a').should('have.attr', 'href', 'http://localhost:3001/useshorturl/2');
   });
 })
